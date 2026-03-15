@@ -11,13 +11,13 @@ interface Props {
 const RestaurantCard = ({ data, active, onClick }: Props) => (
   <motion.div
     layout
-    whileHover={{ y: -2 }}
+    whileHover={{ y: -3 }}
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
-    className={`group relative flex gap-4 p-4 mb-3 cursor-pointer rounded-2xl transition-all duration-200 ${
+    className={`group relative flex gap-4 p-4 mb-4 cursor-pointer rounded-2xl transition-all duration-300 ${
       active
-        ? "bg-card shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.25)] ring-2 ring-primary"
-        : "bg-card/60 hover:bg-card shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]"
+        ? "bg-card shadow-lg shadow-primary/20 ring-2 ring-primary"
+        : "bg-card/80 hover:bg-card shadow-md shadow-primary/10"
     }`}
   >
     {/* Thumbnail */}

@@ -16,9 +16,10 @@ interface Props {
   restaurants: Restaurant[];
   activeId: number | null;
   onSelect: (id: number) => void;
+  onMarkerClick?: (restaurant: Restaurant) => void;
 }
 
-const FoodMap = ({ restaurants, activeId, onSelect }: Props) => {
+const FoodMap = ({ restaurants, activeId, onSelect, onMarkerClick }: Props) => {
   const active = restaurants.find((r) => r.id === activeId);
 
   return (
@@ -51,7 +52,12 @@ const FoodMap = ({ restaurants, activeId, onSelect }: Props) => {
             iconSize: [40, 40],
             iconAnchor: [20, 40],
           })}
-          eventHandlers={{ click: () => onSelect(item.id) }}
+          eventHandlers={{ click: () => {
+            onSelect(item.id);
+            if (onMarkerClick) {
+              onMarkerClick(item);
+            }
+          } }}
         >
           <Popup>
             <div className="p-1">
